@@ -152,10 +152,10 @@ def scrape_weworkremotely(url):
 
 def scrape_jobspresso(url):
     def scrape_jobspresso(url):
-    # Send a request to the URL and get the content
+        # Send a request to the URL and get the content
     response = requests.get(url)
 
-    # Check if the request was successful
+        # Check if the request was successful
     if response.status_code == 200:
         # Parse the HTML content using BeautifulSoup
         soup = BeautifulSoup(response.content, "html.parser")
