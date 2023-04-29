@@ -78,8 +78,7 @@ def scrape_remote_co(url):
             print(f"Job Link: https://remote.co{job_link}\n")
     else:
         print("Failed to fetch the webpage. Status code:", response.status_code)
-
-    pass
+        pass
 
 def scrape_working_nomads(url):
     job_listings = []
@@ -108,8 +107,7 @@ def scrape_working_nomads(url):
             print(f"Job Link: https://workingnomads.co{job_link}\n")
     else:
         print("Failed to fetch the webpage. Status code:", response.status_code)
-
-    pass
+        pass
 
 # You can continue adding scraping functions for the other URLs in the list.
 # Remember to call them in the main function and aggregate the results.
