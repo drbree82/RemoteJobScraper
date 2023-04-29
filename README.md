@@ -10,7 +10,11 @@ This Python script scrapes remote job listings from various websites and generat
 ### Installation
 
 1. Clone the repository.
-2. Install the required dependencies by running `pip install -r requirements.txt`.
+2. Install the required dependencies by running 
+
+pip install beautifulsoup4
+pip install flask
+pip install feedgen
 
 ### Usage
 
