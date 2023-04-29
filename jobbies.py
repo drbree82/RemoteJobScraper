@@ -82,21 +82,15 @@ def scrape_remote_co(url):
     pass
 
 def scrape_working_nomads(url):
-    # Send a request to the URL and get the content
+    job_listings = []
+
     response = requests.get(url)
-    
-    # Check if the request was successful
+
     if response.status_code == 200:
-        # Parse the HTML content using BeautifulSoup
-        soup = BeautifulSoup(response.content, "html.parser")
-        
-        # Find the job listings container
-        jobs_container = soup.find("div", class_="jobs-container")
-        
-        # Find all job listings
-        job_listings = jobs_container.find_all("div", class_="job")
-        
-        # Iterate through the job
+        soup = BeautifulSoup(response.text, 'html.parser')
+        job_listings_section = soup.find("section", class_="jobs")
+        job_listings = job_listings_section.find_all("li")
+
         # Iterate through the job listings and extract information
         for job in job_listings:
             # Find the job title
