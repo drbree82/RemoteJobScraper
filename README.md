@@ -1,36 +1,36 @@
-Remote Job Listings Scraper
-This is a Python script that scrapes remote job listings from various websites and aggregates them into an RSS feed.
+## Remote Job Scraper
 
-Requirements
-This script requires the following libraries to be installed:
+This Python script scrapes remote job listings from various websites and generates an RSS feed containing the aggregated results. The script uses the [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) library for web scraping and the [feedgen](https://github.com/lkiesow/python-feedgen) library for generating the RSS feed.
 
-requests
-BeautifulSoup
-feedgen
-Flask
-You can install these libraries using pip by running:
+### Prerequisites
 
-Copy code
-pip install requests BeautifulSoup4 feedgen Flask
-Usage
-To run the script, simply run the following command in the terminal:
+* Python 3.x
+* pip package manager
 
-php
-Copy code
-python <filename>.py
-This will start a Flask server on http://localhost:5000/. You can access the generated RSS feed by visiting http://localhost:5000/rss.
+### Installation
 
-The script currently scrapes remote job listings from the following websites:
+1. Clone the repository.
+2. Install the required dependencies by running `pip install -r requirements.txt`.
 
-https://www.flexjobs.com/jobs
-https://remote.co/remote-jobs
-https://workingnomads.co/jobs
-The job listings from these websites are aggregated into an RSS feed and saved in a file called remote_job_listings.xml.
+### Usage
 
-Customization
-You can customize the list of URLs to scrape by modifying the urls list in the script.
+1. Run the script using `python main.py`.
+2. The script will scrape job listings from various websites and generate an RSS feed in the `remote_job_listings.xml` file.
+3. The RSS feed can be accessed by navigating to `http://localhost:5000/rss` in a web browser.
 
-You can also add new scraping functions for additional websites by following the same structure as the existing functions and adding them to the main() function.
+### Supported Websites
 
-Logging
-The script logs all errors and debugging information to a file called app.log.
+* https://www.flexjobs.com/jobs
+* https://remote.co/remote-jobs
+* https://workingnomads.co/jobs
+* https://weworkremotely.com
+* https://jobspresso.co/browsejobs
+* https://www.virtualvocations.com/jobs
+* https://www.freelancer.com/jobs
+* https://www.skipthedrive.com/jobs
+* https://www.peopleperhour.com/freelance-jobs
+* https://www.guru.com/d/jobs
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
