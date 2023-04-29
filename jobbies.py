@@ -47,39 +47,317 @@ def scrape_flexjobs(url):
     return job_listings
 
 def scrape_remote_co(url):
-    # Implement the scraping code for Remote.co
+     # Send a request to the URL and get the content
+    response = requests.get(url)
+    
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+        
+        # Find the job listings container
+        jobs_container = soup.find("section", class_="jobs")
+        
+        # Find all job listings
+        job_listings = jobs_container.find_all("div", class_="card")
+        
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h2", class_="font-weight-bold").text.strip()
+            
+            # Find the company name
+            company = job.find("span", class_="text-secondary").text.strip()
+            
+            # Find the job link
+            job_link = job.find("a", class_="card")["href"]
+            
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Company: {company}")
+            print(f"Job Link: https://remote.co{job_link}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
+
     pass
 
 def scrape_working_nomads(url):
-    # Implement the scraping code for Working Nomads
+    # Send a request to the URL and get the content
+    response = requests.get(url)
+    
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+        
+        # Find the job listings container
+        jobs_container = soup.find("div", class_="jobs-container")
+        
+        # Find all job listings
+        job_listings = jobs_container.find_all("div", class_="job")
+        
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h2", class_="title").text.strip()
+            
+            # Find the job category
+            category = job.find("div", class_="meta").find("span", class_="category").text.strip()
+            
+            # Find the job link
+            job_link = job.find("a", class_="job-link")["href"]
+            
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Category: {category}")
+            print(f"Job Link: {job_link}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
+
     pass
 
 def scrape_weworkremotely(url):
-    # Implement the scraping code for We Work Remotely
+      # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("div", class_="jobs-container")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("div", class_="feature")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("span", class_="title").text.strip()
+
+            # Find the company name
+            company = job.find("span", class_="company").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="feature")["href"]
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Company: {company}")
+            print(f"Job Link: https://weworkremotely.com{job_link}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
     pass
 
 def scrape_jobspresso(url):
-    # Implement the scraping code for Jobspresso
+    def scrape_jobspresso(url):
+    # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("div", class_="job_listings")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("li", class_="job_listing")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h3", class_="job_listing-title").text.strip()
+
+            # Find the company name
+            company = job.find("div", class_="job_listing-company").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="job_listing-clickbox")["href"]
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Company: {company}")
+            print(f"Job Link: {job_link}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
+
     pass
 
 def scrape_virtualvocations(url):
-    # Implement the scraping code for Virtual Vocations
+def scrape_virtualvocations(url):
+    # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("div", class_="lrv-a-grid")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("div", class_="lrv-a-grid-item")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h2", class_="entry-title").text.strip()
+
+            # Find the company name
+            company = job.find("span", class_="entry-company").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="entry-title__link")["href"]
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Company: {company}")
+            print(f"Job Link: {job_link}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
     pass
 
 def scrape_freelancer(url):
-    # Implement the scraping code for Freelancer.com
+    def scrape_freelancer(url):
+    # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("div", class_="JobSearchCard-list")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("div", class_="JobSearchCard-item")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h2", class_="JobSearchCard-primary-heading").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="JobSearchCard-primary-heading-link")["href"]
+
+            # Find the job budget
+            budget = job.find("div", class_="JobSearchCard-secondary-price").text.strip()
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Job Link: https://www.freelancer.com{job_link}")
+            print(f"Budget: {budget}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
+
     pass
 
 def scrape_skipthedrive(url):
-    # Implement the scraping code for SkipTheDrive
+    # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("div", class_="listify_widget")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("article", class_="job_listing")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h3", class_="job_listing-title").text.strip()
+
+            # Find the company name
+            company = job.find("div", class_="job_listing-company").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="job_listing-clickbox")["href"]
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Company: {company}")
+            print(f"Job Link: {job_link}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
     pass
 
 def scrape_peopleperhour(url):
-    # Implement the scraping code for PeoplePerHour
+      # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("ul", class_="clearfix")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("li", class_="clearfix")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h2", class_="clearfix").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="clearfix")["href"]
+
+            # Find the job budget
+            budget = job.find("span", class_="pull-right").text.strip()
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Job Link: https://www.peopleperhour.com{job_link}")
+            print(f"Budget: {budget}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
     pass
 
 def scrape_guru(url):
-    # Implement the scraping code for Guru.com
+    def scrape_guru(url):
+    # Send a request to the URL and get the content
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        # Find the job listings container
+        jobs_container = soup.find("section", class_="job-list")
+
+        # Find all job listings
+        job_listings = jobs_container.find_all("div", class_="job-list-item")
+
+        # Iterate through the job listings and extract information
+        for job in job_listings:
+            # Find the job title
+            title = job.find("h3", class_="job-title").text.strip()
+
+            # Find the job link
+            job_link = job.find("a", class_="job-title")["href"]
+
+            # Find the job budget
+            budget = job.find("span", class_="job-budget").text.strip()
+
+            # Print the extracted information
+            print(f"Job Title: {title}")
+            print(f"Job Link: https://www.guru.com{job_link}")
+            print(f"Budget: {budget}\n")
+    else:
+        print("Failed to fetch the webpage. Status code:", response.status_code)
     pass
 
 def scrape_jobs():
@@ -135,5 +413,5 @@ def rss():
 
     return response
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(port=5000)
